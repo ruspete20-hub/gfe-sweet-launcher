@@ -199,7 +199,9 @@ done
 
 export SERVER_DIR="$WORKER_DIR"
 export WORKSPACE_DIR="$WORKSPACE_DIR"
-export BACKEND="${BACKEND:-gfe}"
+# Vast templates may inject BACKEND, which makes start_server.sh look for a
+# built-in worker and require HF_TOKEN. This launcher provides worker.py itself.
+unset BACKEND
 export WORKER_PORT="${WORKER_PORT:-3000}"
 export MODEL_LOG="$ADAPTER_LOG"
 export SERVERLESS_RENDER_WAIT_SECONDS="${SERVERLESS_RENDER_WAIT_SECONDS:-${MUSETALK_MAX_SECONDS:-1800}}"
