@@ -4,7 +4,9 @@ set -euo pipefail
 WORKSPACE_DIR="${WORKSPACE_DIR:-/workspace}"
 APP_DIR="${GFE_APP_DIR:-$WORKSPACE_DIR/gfe-sweet}"
 ADAPTER_DIR="$APP_DIR/renderer/musetalk-adapter"
-WORKER_DIR="${SERVER_DIR:-$WORKSPACE_DIR/gfe-pyworker}"
+# Vast's serverless bootstrap always looks for worker.py in
+# "$WORKSPACE_DIR/vast-pyworker", regardless of an incoming SERVER_DIR value.
+WORKER_DIR="$WORKSPACE_DIR/vast-pyworker"
 ADAPTER_LOG="${MODEL_LOG:-/var/log/gfe-musetalk-adapter.log}"
 ADAPTER_PORT="${MUSETALK_ADAPTER_PORT:-18000}"
 
